@@ -1,0 +1,68 @@
+
+{% extends "maqueta.html" %}
+{% load static%}
+
+{% block nav %}
+{% if user.is_authenticated and user.is_superuser %}
+<nav>
+    <a href="{% url 'inicio' %}">Inicio</a> 
+    <a href="{% url 'gestionProducto' %}">Gestionar productos</a>
+    <a href="{% url 'logout' %}">Cerrar Sesion</a>
+</nav> 
+{% endif %}
+{% endblock %}
+
+
+{% block lista %}   
+<div class="lista">
+    <h1>Lista de producto</h1>
+
+    {% if producto %}
+    <table class="table">
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>Nombre</td>
+                <td>Precio</td>
+                <td>Descripción</td>
+                <td>Stock</td>
+                <td>Imagen</td>
+                <td>Acción</td>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for p in producto %}
+        <tr>    
+            <td>{{ p.codigoProducto }}</td>
+            <td>{{ p.nombreProducto }} </td>
+            <td>{{ p.precioProducto }} </td>
+            <td>{{ p.descripcion }} </td>
+            <td>{{ p.stockProducto }}</td>
+            <td>
+                <img src="{{ p.fotoProducto.url }}" width="150px" height="150px"></td>
+                
+            <td><a href = "{% url 'editarProducto' pk=p.codigoProducto %}"> <input class="modificar" type = "submit" value = "Modificar producto"> </a> 
+                <a href = "{% url 'eliminarProducto' pk=p.codigoProducto %}"> <input class="eliminar" type = "submit" value = "Eliminar producto"> </a>
+            </td>
+        </tr>
+        {% endfor %}
+    {% else %}
+        <h2>No hay productos </h2>
+    {% endif %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock%}
+<!--   href="{% url 'gestionCliente' %}"     -->
+
+{% block formulario %}
+<h2>Datos de producto</h2>
+
+<form class="formulario" method="post" enctype="multipart/form-data" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="agregar" type="submit" value="Crear producto">
+</form>   
+{% endblock %}

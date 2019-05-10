@@ -1,0 +1,174 @@
+{% extends "maqueta.html" %}
+{% load static from staticfiles %}
+
+<!--BLOQUES NAV USUARIO NORMAL Y ADMIN-->
+{% block bienvenido_admin  %}
+{% if user.is_authenticated and user.is_superuser %}
+<h2>Bienvenido {{user.username}}</h2>
+<nav>
+    <a href="{% url 'inicio' %}">Inicio</a>
+    <a href="{% url 'gestionProducto' %}">Gestionar productos</a>
+    <a href="{% url 'logout' %}">Cerrar Sesion</a>
+</nav> 
+{% else %}
+<div>
+    <h1></h1>
+</div>
+<nav>
+    <a href="{% url 'inicio' %}">Inicio</a>
+    <a href="{% url 'registroCliente' %}">Registrarse</a>
+    <a href="#">Gestionar Mascotas</a>
+    <a href="{% url 'login' %}">Iniciar Sesion</a>
+</nav> 
+{% endif %}
+{% endblock %}
+
+
+{% block bienvenido_user  %}
+{% if user.is_authenticated  %}
+<h2>Bienvenido {{user.username}}</h2>
+<nav>
+    <a href="{% url 'inicio' %}">Inicio</a>
+    <a href="#">Quienes Somos</a>
+    <a href="#">Servicios</a>
+    <a href="#">Ver Mascotas</a> 
+    <a href="{% url 'logout' %}">Cerrar sesión</a>
+</nav> 
+{% else %}
+<div>
+    <h1></h1>
+</div>
+<!-- NAVEGADOR DE USUARIO SIN LOG -->
+<nav>
+    <a href="{% url 'inicio' %}">Inicio</a>
+    <a href="{% url 'registroCliente' %}">Registrarse</a>
+    <a href="#">Productos</a>
+    <a href="#">Contactanos</a> 
+    <a href="{% url 'login' %}">Iniciar Sesion</a>
+</nav> 
+{% endif %}
+{% endblock %}
+
+<!-- BLOQUES CUERPO PAGINA-->
+
+{% block fotoperro %}
+<div class="fotoperro">
+        <img src="{% static 'img/local1.jpg' %}" width="100%" alt="">
+</div>
+{% endblock %}
+
+{% block info %}
+<div class="info">
+    <div class="texto1">
+        <h3>¡Deja listo tu pedido!</h3>
+    </div>
+
+    <div class="texto2">
+        <h3>Rikishi</h3>
+    </div>
+
+    <div class="texto3">
+        <a href="www.gmail.com"><img src="{% static 'img/1.png' %}" width="4%"> </a>
+        <a href="www.facebook.com"> <img src="{% static 'img/2.png' %}" width="4%"> </a>
+        <a href="www.instagram.com"> <img src="{% static 'img/3.png' %}" width="4%"> </a>
+        <a href="www.hotmail.com"> <img src="{% static 'img/4.png' %}" width="6%"> </a>
+    </div>
+</div>
+{% endblock %}
+
+
+<div id="carrusel">
+    <div>
+        <img src="img/chaparrita.jpg">
+        <p><b>"Estamos felices de tener a Tom en casa. Es un super fiel compañero"</b></p>
+    </div>
+    <div>
+        <img src="img/muffins.jpg">
+        <p><b>"Estamos felices de tener a Duque en casa. Es un super fiel compañero"</b></p>
+    </div>
+    <div>
+        <img src="img/cafes.jpg">
+        <p><b>"Estamos felices de tener a Apolo en casa. Es un super fiel compañero"</b></p>
+    </div>
+    <div>
+        <img src="img/local1.jpg">
+        <p><b>"Estamos felices de tener a Apolo en casa. Es un super fiel compañero"</b></p>
+    </div>
+</div>
+<script src="js/codigo.js"></script>
+
+
+{% block cajainfo %}
+<div class="cajainfo">
+    <div class="columna1">
+        <h1>RIKISHI</h1>
+        
+        <h3>OBJETIVO</h3>
+
+        <br></br>
+
+        <div class="hr1">
+            <hr color=black width=50px size=3 />
+        </div>
+
+        <br></br>
+        <p>El fin de este sistema web es lograr facilitarles la compra a los clientes</p>
+        <p>de los locales de comida dentro del duoc.</p>
+
+        <br></br>
+
+        <div>
+            <img src="{% static 'img/carrito.png' %}" width="50%" >
+        </div>
+    </div>
+ 
+
+
+
+    <div class="columna2">
+        
+        <div>
+            <img src="{% static 'img/retira.jpg' %}" width="40%">
+        </div>
+        <h1>¡SOLO RETIRA PAGANDO!</h1>
+        
+        <h3>¿COMO HACERLO?</h3>
+        <br>
+        <div class="hr1">
+            <hr color=black width=50px size=3 />
+        </div>
+        <br>
+        <p>Registrate en la página e ingresa sesión, podrás ver todos los productos publicados</p>
+        <p>por los locales, realiza tu lista de compra y encarga en la hora que quieras retirar!.</p>
+
+        <br>
+
+        <input type="submit" value="CAMPAÑAS" />
+    </div>
+</div>
+{% endblock %}
+<!--
+{% block collage %}
+<div class="collage">
+
+    <div class="caja">
+        <img src="{% static 'img/rescatados/Oso_tn.jpg' %}" alt="Nueve">
+        <img src="{% static 'img/rescatados/Maya_tn.jpg' %}" alt="Nueve">
+        <img src="{% static 'img/rescatados/Wifi_tn.jpg' %}" alt="Nueve">
+    </div>
+
+
+    <div class="caja largo">
+        <img src="{% static 'img/rescatados/Chocolate_tn.jpg' %}" alt="Nueve">
+        <img src="{% static 'img/rescatados/Pexel_tn.jpg' %}" alt="Nueve">
+    </div>
+
+
+    <div class="caja">
+        <img src="{% static 'img/rescatados/Bigotes_tn.jpg' %}" alt="Nueve" style="height:62%">
+        <img src="{% static 'img/rescatados/Luna_tn.jpg' %}" alt="Nueve">
+    </div>
+
+</div>
+{% endblock %}
+-->

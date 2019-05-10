@@ -1,0 +1,33 @@
+
+{% extends "maqueta.html" %}
+{% load static%}
+
+{% block nav %}
+{% if user.is_authenticated and user.is_superuser %}
+<nav>
+    <a href="{% url 'inicio' %}">Inicio</a> 
+    <a href="{% url 'registroCliente' %}">Gestionar Mascotas</a>
+    <form class="logout-link" action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Cerrar Sesión</button>
+                    </form>
+</nav> 
+{% else %}
+<nav>
+    <a href="{% url 'inicio' %}">Inicio</a>
+    <a href="{% url 'registroCliente' %}">Registrarse</a>
+    <a href="#">Productos</a>
+    <a href="#">Contactanos</a> 
+    <a href="{% url 'login' %}">Iniciar Sesion</a>
+</nav> 
+{% endif %}
+{% endblock %}
+
+
+{% block formulario %}
+<form action="{% url 'login' %}" method="post">
+	{% csrf_token %}
+	{{ form }}
+	<input type="submit" value="Iniciar Sesión">
+</form>
+{% endblock %}
