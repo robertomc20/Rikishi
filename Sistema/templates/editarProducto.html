@@ -12,12 +12,19 @@
 
 
 {% block formulario %}
-<h2>Datos de producto</h2>
+<div class="paneleditar">
+    <div class="tituloeditar">
+       Edicion de Producto
+    </div>
+<div class="formularieditar">
 <form class="formulario" method="post" enctype="multipart/form-data" action="">
+    <div class="contenedor-inputseditar">
     {% csrf_token %}
-    
     {{ form.as_p }}
-    <input class="agregar" type="submit" value="Modificar producto">
-</form>    
+   <input class="btn-enviar" type="submit" value="Confirmar edicion">
+</div>
+</form> 
+</div> 
+</div>  
 
 {% endblock %}

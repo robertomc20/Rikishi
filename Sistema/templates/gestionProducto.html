@@ -4,7 +4,6 @@
 
 {% block nav %}
 {% if user.is_authenticated and user.is_superuser %}
-<h2>Bienvenido {{user.username}}</h2>
 <nav>
     <a href="{% url 'inicio' %}">Inicio</a> 
     <a href="{% url 'gestionProducto' %}">Gestionar productos</a>
@@ -13,57 +12,64 @@
 {% endif %}
 {% endblock %}
 
-
 {% block lista %}   
-<div class="lista">
-    <h1>Lista de producto</h1>
-
-    {% if producto %}
-    <table class="table">
-        <thead>
-            <tr>
-                <td>#</td>
-                <td>Nombre</td>
-                <td>Precio</td>
-                <td>Descripción</td>
-                <td>Stock</td>
-                <td>Imagen</td>
-                <td>Acción</td>
-            </tr>
-        </thead>
-
-        <tbody>
-        {% for p in producto %}
-        <tr>    
-            <td>{{ p.codigoProducto }}</td>
-            <td>{{ p.nombreProducto }} </td>
-            <td>{{ p.precioProducto }} </td>
-            <td>{{ p.descripcion }} </td>
-            <td>{{ p.stockProducto }}</td>
-            <td>
-                <img src="{{ p.fotoProducto.url }}" width="150px" height="150px"></td>
-                
-            <td><a href = "{% url 'editarProducto' pk=p.codigoProducto %}"> <input class="modificar" type = "submit" value = "Modificar producto"> </a> 
-                <a href = "{% url 'eliminarProducto' pk=p.codigoProducto %}"> <input class="eliminar" type = "submit" value = "Eliminar producto"> </a>
-            </td>
-        </tr>
-        {% endfor %}
-    {% else %}
-        <h2>No hay productos </h2>
-    {% endif %}
-        </tbody>
-    </table>
-
+<div class="panellista">
+    <div class="formulariolista">
+        <div class="formucontenedor">      
+            <table class="tablalista" border="0">
+                <thead>
+                    <tr>
+                        <td class="columnas">#</td>
+                        <td class="columnas">Nombre</td>
+                        <td class="columnas">Precio</td>
+                        <td class="columnas">Descripción</td>
+                        <td class="columnas">Stock</td>
+                        <td class="columnas">Imagen</td>
+                        <td class="columnas">Acción</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if producto %}
+                        {% for p in producto %}
+                            <tr>    
+                                <td class="fila">{{ p.codigoProducto }}</td>
+                                <td class="fila">{{ p.nombreProducto }}</td>
+                                <td class="fila">{{ p.precioProducto }}</td>
+                                <td class="fila">{{ p.descripcion }} </td>
+                                <td class="fila">{{ p.stockProducto }}</td>
+                                <td class="foto">
+                                    <img src="{{ p.fotoProducto.url }}" width="200px" height="100px"></td>
+                                <td class="boton_accion">
+                                    <a class= "boton_editarlista" href = "{% url 'editarProducto' pk=p.codigoProducto %}"> EDITAR </a> 
+                                    <a class= "boton_eliminarlista" href = "{% url 'eliminarProducto' pk=p.codigoProducto %}"> ELIMINAR </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <h2>No hay productos </h2>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock%}
+
 <!--   href="{% url 'gestionCliente' %}"     -->
 
 {% block formulario %}
-<h2>Datos de producto</h2>
-
-<form class="formulario" method="post" enctype="multipart/form-data" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input class="agregar" type="submit" value="Crear producto">
-</form>   
+<div class="regpanel">
+    <div class="regtitulo">
+        Datos de producto
+    </div>
+    <div class="regproducto">
+        <form class="formulario" method="post" enctype="multipart/form-data" action="">
+        <div class="regcontenedor-inputs">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="btn-enviar" type="submit" value="Crear producto">
+        </div>
+        </form>  
+    </div>
+</div> 
 {% endblock %}

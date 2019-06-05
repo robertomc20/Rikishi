@@ -19,56 +19,53 @@
         <div class="contenedor">
                 <header>     
                     <div class="logo">
-                        <img src="{% static 'img/logo.jpeg' %}" width="100%" alt="">
+                        <img src="{% static 'img/sumo.png' %}" width="100%" alt="">
                     </div>	               
                 </header>
 
     {% if user.is_superuser %}
 
-    {% block bienvenido_admin %}
-    {% endblock %}
+        {% block bienvenido_admin %}
+        {% endblock %}
         
     {% else %}
         
-    {% block bienvenido_user %}
-    {% endblock %}
+        {% block bienvenido_user %}
+        {% endblock %}
         
     {% endif %}
         
-        {% block nav %}
-            
-        {% endblock %}	
+    {% block nav %}       
+    {% endblock %}	
         
         <!-- bloques pagina login-->
             
-        {% block login %}
-        {% endblock %}
+    {% block login %}
+    {% endblock %}
 
 
-        {% block jaja %}
-        {% endblock %}  
+    {% block jaja %}
+    {% endblock %}  
 
         <!-- BLOQUES CLIENTES y PERROS -->
   
-        {% block formulario %}
-        {% endblock %}  
+    {% block formulario %}
+    {% endblock %}  
+    
 
-        {% block lista2 %}
-        {% endblock %}
-
-        {% block lista %}
-        {% endblock %}  
+    {% block lista %}
+    {% endblock %}  
 
         <!--BLOQUES PAGINA  -->
         
-        {% block fotoperro %}      
-        {% endblock %}  
+    {% block fotoperro %}      
+    {% endblock %}  
 
-        {% block info %}
-        {% endblock %}  
+    {% block info %}
+    {% endblock %}  
 
-        {% block cajainfo %}
-        {% endblock %}  
+    {% block cajainfo %}
+    {% endblock %}  
 
         <!--
         {% block collage %}
@@ -76,23 +73,23 @@
         -->
         <!--BLOQUES RECUPERACION CONTRASEÑA -->
 
-        {% block form_contraseña %}
-        {% endblock %} 
+    {% block form_contraseña %}
+    {% endblock %} 
 
-        {% block contraseña_instrucciones %}
-        {% endblock %}
+    {% block contraseña_instrucciones %}
+    {% endblock %}
                 
-        {% block confirmar_contraseña %}
-        {% endblock %}
+    {% block confirmar_contraseña %}
+    {% endblock %}
 
-        {% block constraseña_ok %}
-        {% endblock %}
+    {% block constraseña_ok %}
+    {% endblock %}
 
-
+      </div>
+    </body>
     <footer>
         <p><b>Desarrollo Web y Mobile</b></p>
     </footer>
 
-        </div>
-    </body>
+  
 </html>
