@@ -16,6 +16,9 @@ urlpatterns=[
     url(r'^productos/$',views.gestionProducto,name="gestionProducto"),
     url(r'^productos/editar/(?P<pk>[0-9]+)/$',views.editarProducto,name="editarProducto"),
     url(r'^productos/eliminar/(?P<pk>[0-9]+)/$',views.eliminarProducto,name="eliminarProducto"),
+    url(r'^lista/$',views.verProductos,name="verProductos"),
+    url(r'^lista/añadir/(?P<pk>[0-9]+)/$',views.añadirProducto,name="añadirProducto"),
+    url(r'^lista/eliminar/(?P<pk>[0-9]+)/$',views.eliminarPedido,name="eliminarPedido"),
    
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,99 @@
+
+{% extends "maqueta.html" %}
+{% load static%}
+
+{% block bienvenido_user  %}
+{% if user.is_authenticated  %}
+<h2>Bienvenido {{user.username}}</h2>
+<nav>
+    <a href="{% url 'inicio' %}">Inicio</a>
+    <a href="#">Quienes Somos</a>
+    <a href="#">Servicios</a>
+    <a href="{% url 'verProductos' %}">Ver productos</a> 
+    <a href="{% url 'logout' %}">Cerrar sesión</a>
+</nav> 
+{% endif %}
+{% endblock %}
+
+{% block lista2 %}   
+<div class="lista">
+    <h1>Carrito de compras</h1>
+
+    {% if pedido %}
+    <table class="table">
+        <thead>
+            <tr>
+                <td>#ID PEDIDO</td>
+                <td>Nombre</td>
+                <td>Precio</td>
+                <td>Acción</td>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for dp in pedido %}
+        <tr>    
+            <td>{{ dp.codigoPedido }}</td>
+            <td>{{ dp.nombreProducto }} </td>
+            <td>{{ dp.precioProducto }} </td>
+
+                
+            <td>
+                <a href = "#"> <input class="modificar" type = "submit" value = "Encargar pedido"> </a> 
+                <a href = "{% url 'eliminarPedido' pk=dp.codigoPedido %}"> <input class="eliminar" type = "submit" value = "Quitar del carrito"> </a> 
+            </td>
+        </tr>
+        {% endfor %}
+    {% else %}
+        <h2>No hay productos </h2>
+    {% endif %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock%}
+
+
+{% block lista %}   
+<div class="lista">
+    <h1>Lista de producto</h1>
+
+    {% if producto %}
+    <table class="table">
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>Nombre</td>
+                <td>Precio</td>
+                <td>Descripción</td>
+                <td>Stock</td>
+                <td>Imagen</td>
+                <td>Acción</td>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for p in producto %}
+        <tr>    
+            <td>{{ p.codigoProducto }}</td>
+            <td>{{ p.nombreProducto }} </td>
+            <td>{{ p.precioProducto }} </td>
+            <td>{{ p.descripcion }} </td>
+            <td>{{ p.stockProducto }}</td>
+            <td>
+                <img src="{{ p.fotoProducto.url }}" width="150px" height="150px"></td>
+                
+            <td><a href = "{% url 'añadirProducto' pk=p.codigoProducto %}"> <input class="modificar" type = "submit" value = "Agregar a carrito"> </a> 
+            </td>
+        </tr>
+        {% endfor %}
+    {% else %}
+        <h2>No hay productos </h2>
+    {% endif %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock%}
+<!--   href="{% url 'gestionCliente' %}"     -->
+
