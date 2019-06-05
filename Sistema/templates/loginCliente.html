@@ -25,9 +25,18 @@
 
 
 {% block formulario %}
-<form action="{% url 'login' %}" method="post">
-	{% csrf_token %}
-	{{ form }}
-	<input type="submit" value="Iniciar Sesión">
-</form>
+<div class="panel">
+    <div class="titulo">
+        <h1>INICIAR SESION</h1>
+    </div>
+ <div class="formulari">
+ <form method="post" action="" enctype="multipart/form-data">
+            <div class="contenedor-inputs">
+                {% csrf_token %}
+                {{form.as_ul}}
+                <input type="submit" class="btn-ingreso" value="Ingresar">
+            </div>
+        </form> 
+</div>
+</div>
 {% endblock %}

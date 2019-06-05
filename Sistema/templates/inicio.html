@@ -4,7 +4,7 @@
 <!--BLOQUES NAV USUARIO NORMAL Y ADMIN-->
 {% block bienvenido_admin  %}
 {% if user.is_authenticated and user.is_superuser %}
-<h2>Bienvenido {{user.username}}</h2>
+<h2 class="mensaje">Bienvenido {{user.username}}</h2>
 <nav>
     <a href="{% url 'inicio' %}">Inicio</a>
     <a href="{% url 'gestionProducto' %}">Gestionar productos</a>
@@ -26,12 +26,12 @@
 
 {% block bienvenido_user  %}
 {% if user.is_authenticated  %}
-<h2>Bienvenido {{user.username}}</h2>
+<h2 class="mensaje">Bienvenido {{user.username}}</h2>
 <nav>
     <a href="{% url 'inicio' %}">Inicio</a>
     <a href="#">Quienes Somos</a>
     <a href="#">Servicios</a>
-    <a href="{% url 'verProductos' %}">Ver productos</a> 
+    <a href="#">Ver Mascotas</a> 
     <a href="{% url 'logout' %}">Cerrar sesión</a>
 </nav> 
 {% else %}
@@ -52,21 +52,30 @@
 <!-- BLOQUES CUERPO PAGINA-->
 
 {% block fotoperro %}
-<div class="fotoperro">
-        <img src="{% static 'img/local1.jpg' %}" width="100%" alt="">
-</div>
+<script src="{% static 'prefix.js' %}" type="test/javascript"></script>
+<link rel="stylesheet" href="{% static 'css/jquery.bxslider.css' %}">
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/jquery.bxslider.min.js' %}"></script>
+
+<div class="carrusel-social">
+    <div class="car">
+        <ul class="carrusel">
+            <li class="img"><img src="{% static 'img/local1.jpg' %}"></li>
+            <li class="img"><img src="{% static 'img/muffins.jpg' %}"></li>
+            <li class="img"><img src="{% static 'img/chaparrita.jpg' %}"></li>
+            <li class="img"><img src="{% static 'img/cafes.jpg' %}"></li>
+        </ul>
+    </div>
+ </div>
+<script src="{% static 'js/codigo.js' %}"></script>
 {% endblock %}
 
 {% block info %}
 <div class="info">
     <div class="texto1">
-        <h3>¡Deja listo tu pedido!</h3>
+        <h3>Comunicate con nosotros por nuestras redes sociales!</h3>
     </div>
-
-    <div class="texto2">
-        <h3>Rikishi</h3>
-    </div>
-
+    
     <div class="texto3">
         <a href="www.gmail.com"><img src="{% static 'img/1.png' %}" width="4%"> </a>
         <a href="www.facebook.com"> <img src="{% static 'img/2.png' %}" width="4%"> </a>

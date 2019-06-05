@@ -12,12 +12,20 @@
 
 
 {% block formulario %}
-<form method="post" enctype="multipart/form-data" action="">
+<div class="paneleliminar">
+    <div class="tituloeliminar">
+        <h1>ELIMINAR PRODUCTO</h1>
+    </div>
+ <div class="formularioeliminar">
+ <form method="post" action="" enctype="multipart/form-data">
+    <div class="contenedor-inputseliminar">
     {% csrf_token %}
     <h3>¿Desea eliminar el registro de {{ producto.nombreProducto }}?</h3>
     {{ form.as_p }}
-    <input type="submit" value="Si, eliminar">
-    <a href= "{% url 'gestionProducto' %}">Cancelar</a>
-</form>    
-
+    <input class="boton_eliminarprod" type="submit" value="Si, eliminar">
+    <a class="boton_cancelar" href= "{% url 'gestionProducto' %}">Cancelar</a>
+       </div>
+       </form> 
+</div>
+</div>
 {% endblock %}

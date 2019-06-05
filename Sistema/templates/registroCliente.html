@@ -25,11 +25,18 @@
 
 
 {% block formulario %}
-<h2>¡Complete con sus datos!</h2>
-
+<div class="panel2">
+    <div class="titulo2">
+        Registro Usuario
+    </div>
+<div class="formulari2">
 <form class="formulario" method="post" enctype="multipart/form-data" action="">
+    <div class="contenedor-inputs2">
     {% csrf_token %}
     {{ form.as_p }}
-    <input class="agregar" type="submit" value="Registrarme">
-</form>   
+    <input class="btn-enviar" type="submit" value="Registrarme">
+</div>
+</form> 
+</div> 
+</div>  
 {% endblock %}
