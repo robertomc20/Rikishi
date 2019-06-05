@@ -1,0 +1,98 @@
+
+
+<html lang="es">
+{% load static from staticfiles %}
+<head>
+    
+    <meta charset="utf-8">
+    <title>Rikishi</title>
+    <meta name="description" content="Pagina completa con Flexbox"><!--Utilizamos el descriptor en meta para apoyar la busqueda de contenidos en la web-->
+    <meta name="viewport" content="width=device-widtg, user-scalable=no, initial-scale=1.0,maximun-scale=1.0,minimun-scale=1.0"><!--las escalas indican un punto inicial, la escala maxima y minima-->
+    <script src="prefix.js" type="test/javascript"></script><!--Script para asegurar que en todos los navegadores y dispositivos el sitio se vea igual-->
+    <link rel="stylesheet"  type ="text/css"  href="{% static 'css/estilos.css' %}">
+    <link rel="stylesheet" href="jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.bxslider.min.js"></script>
+</head>
+    <body>
+        <div class="contenedor">
+                <header>     
+                    <div class="logo">
+                        <img src="{% static 'img/logo.jpeg' %}" width="100%" alt="">
+                    </div>	               
+                </header>
+
+    {% if user.is_superuser %}
+
+    {% block bienvenido_admin %}
+    {% endblock %}
+        
+    {% else %}
+        
+    {% block bienvenido_user %}
+    {% endblock %}
+        
+    {% endif %}
+        
+        {% block nav %}
+            
+        {% endblock %}	
+        
+        <!-- bloques pagina login-->
+            
+        {% block login %}
+        {% endblock %}
+
+
+        {% block jaja %}
+        {% endblock %}  
+
+        <!-- BLOQUES CLIENTES y PRODUCTOS -->
+  
+        {% block formulario %}
+        {% endblock %}  
+
+        {% block carro%}
+        {% endblock %}
+        
+        {% block lista %}
+        {% endblock %}  
+
+        <!--BLOQUES PAGINA  -->
+        
+        {% block fotoperro %}      
+        {% endblock %}  
+
+        {% block info %}
+        {% endblock %}  
+
+        {% block cajainfo %}
+        {% endblock %}  
+
+        <!--
+        {% block collage %}
+        {% endblock %}
+        -->
+        <!--BLOQUES RECUPERACION CONTRASEÑA -->
+
+        {% block form_contraseña %}
+        {% endblock %} 
+
+        {% block contraseña_instrucciones %}
+        {% endblock %}
+                
+        {% block confirmar_contraseña %}
+        {% endblock %}
+
+        {% block constraseña_ok %}
+        {% endblock %}
+
+
+    <footer>
+        <p><b>Rikishi pedidos</b></p>
+    </footer>
+
+        </div>
+    </body>
+</html>

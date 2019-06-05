@@ -1,0 +1,605 @@
+* {
+	margin: 0;
+	padding: 0;
+	/*se define como se calcularán los cuadrados en base al ancho y al alto con respecto al padding
+	content-box indica que todo será sin considerar padding o bordes
+	border-box indica que se incluyen en los calculos bordes y padding
+	initial se fija el valor por defecto, depende del dispositivo y el navegador
+	inherit utiliza el valor del contenedor del elemento
+	*/
+	box-sizing: border-box;
+	
+}
+
+.contenedor {
+	background:#ccc;
+	max-width:1300px;
+	width: 100%;
+	margin:auto;
+	justify-content:space-between;
+	/* Flexbox */
+	/*display es la propiedad que indica como se verán los elementos
+	En css tradicional se usan tipicamente block, inline none, table, pero existen varias opciones
+	flex indica que el elemento tendrá características responsivas
+	*/
+	display:flex;
+	/*Flex-flow indica como se desplegarán los elementos dentro de un contenedor flex
+	hay dos configuraciones básicas flex-direction y flex-wrap
+	row, row-reverse, column, column-reverse flex directiion
+	nowrap,wrap,wrap-reverse
+	*/
+	flex-flow:row wrap;
+	
+}
+
+
+
+body {
+	background:#ccc;
+}
+
+.jaja{
+	background-color:#4cb487;
+	width:100%;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+
+.formulario {
+	background-color:#4cb487;
+	padding:30px;
+	width: 100%;
+	display: block;
+	justify-content: space-between;
+	flex-direction: column;
+
+}
+
+h2{
+	background-color:#4cb487;
+	padding:10px;
+	width: 100%;
+}
+
+.agregar{
+	text-decoration: none;
+	background-color: white;
+    color: black;
+	border: 2px solid black; /* Green */
+	font-weight: 400;
+	font-size: 20px;
+	margin: 5px;
+	padding: 10px;
+}
+
+
+.lista {
+	background-color:#4cb487;
+	width:100%;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+.lista .table  {
+	border-collapse: collapse;
+	border: 1px solid black;
+	margin: 20px;
+	padding :20px;
+}
+
+.lista .table thead td {
+	border-collapse: collapse;
+	border: 1px solid black;
+	margin: 20px;
+	padding: 10px;
+}
+
+.lista .table tbody td {
+	border-collapse: collapse;
+	border: 1px solid black;
+	margin: 20px;
+	padding: 20px;
+	height: 150px;
+	width: 300px;
+}
+
+
+.lista .table .modificar{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 400;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .lista .table .modificar:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+  }
+
+
+.lista .table .eliminar{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 400;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #CC4022;
+    border-radius: 6px;
+    border: 2px solid #993F2C;
+  }
+  .lista .table .eliminar:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+  }
+
+header {
+	background:#fff;
+	width:100%;
+	padding:20px;
+
+	/* Flexbox */
+	display: flex;
+	/*flex-start desde un comienzo hasta el final
+	flex-end desde el final al comienzo
+	center 
+	space-between los items son puestos con espacios posteriores
+	space-around items son puestos con espacios antes
+	*/
+	justify-content:space-between;
+	align-items:center;
+
+	flex-direction:row;/**otra forma de mostrar lo mismo*/
+	flex-wrap:wrap;
+}
+
+header .logo {
+	color:#fff;
+	font-size:30px;
+}
+
+header .logo img {
+	width:100%;
+	vertical-align:center;
+}
+
+header .logo a {
+	color:#fff;
+	text-decoration: none;
+	line-height:50px;
+}
+
+
+
+
+nav {
+	background:#4cb487;
+	width:100%;
+
+	/* Flexbox */
+
+	display:flex;
+	justify-content:space-between;
+	flex-direction:row;/**otra forma de mostrar lo mismo*/
+	flex-wrap:wrap;
+}
+
+nav a {
+	background:#4cb487;
+	color:#fff;
+	text-align: center;
+	text-decoration: none;
+	padding:10px;
+
+	/* Flexbox */
+	flex-grow:1; /*Especifica el numero maximo de items flex que pueden adecuarse en una zona*/
+}
+
+nav a:hover {
+	background:#206346;
+}
+
+
+ .fotoperro {
+
+	background:#4cb487;
+	width:100%;
+
+	/* Flexbox */
+
+	display:flex;
+	flex-wrap:wrap;
+	align-items:center;
+	justify-content:center;
+	flex-direction:column;/**otra forma de mostrar lo mismo*/
+	flex-wrap:wrap;
+	vertical-align: center;
+	flex-grow:1;
+}
+
+
+.fotoperro img{
+	width: 60%;
+	vertical-align: center;
+	text-align: center;
+	
+}
+
+
+
+
+.info 
+{
+	color:#fff;
+	background:#4cb487;
+	width: 100%;
+	text-align: center;
+
+}
+.texto1
+{
+	display:inline-block;
+	
+	margin: 10px;
+	width: 200px;
+	height: 20px;
+
+}
+.texto2
+{
+	display:inline-block;
+	
+	margin: 10px;
+	width: 340px;
+	height: 20px;
+
+}
+.texto3
+{
+	display:inline-block;
+	
+	margin: 10px;
+	width: 330px;
+	height: 20px;
+
+}
+
+
+
+#carrusel {
+	background-color: #4cb487;
+	width:100%;
+}
+
+#carrusel img{
+    width: 100%;
+    background:#4cb487;
+    position: relative;
+}
+
+#carrusel p{
+	width: 40%;
+	padding-left: 20px;
+	position: absolute;
+	bottom: 70px;
+	text-align: left;
+}
+
+
+.cajainfo {
+	width: 1300px;
+	display:flex;
+	font-size:15px;
+	padding:0 10px;
+	background-color:white;
+	padding-top:20px;
+	padding-bottom: 30px;
+}
+
+.cajainfo h3{
+	color:grey;
+}
+
+.columna1{
+	display:flex;
+	width: 50%;
+	flex-direction:column;
+	align-items:right;
+	text-align:right;
+	padding-right:10px;
+}
+
+
+.columna1 hr{
+	float:right;
+}
+
+
+
+
+
+
+.columna2{
+	display:flex;
+	width: 50%;
+	flex-direction:column;
+	align-items:left;
+	text-align:left;
+	padding-left:10px;
+}
+
+
+.columna2 hr{
+	float:left;
+}
+
+
+.cajainfo .columna2 input{
+	text-decoration:none;
+	font-weight: 600;
+	font-size: 15px;
+	color:#000000;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:3px;
+	padding-right:3px;
+	background-color: transparent;
+	border-width: 3px;
+	border-style: solid;
+	border-color: #000000;
+	width: 25%;
+}
+
+
+.main {
+	background:#3CEF8D;
+	
+
+	flex:1 1 70%;/*Establece que sera un 70% del ancho del contenedor
+	1 es el numero máximo de items flex 
+	1 estabñece que será automático el ajuste, es decir no cambiará su escala en base a los dimensionamientos
+	
+	*/
+	
+	/*flex:1;*/
+}
+
+.collage{
+	width: 100%;
+	max-width: 1000px;
+ 
+	margin: auto;
+	display:flex;
+	justify-content:space-between;
+	background-color:#4cb487; 
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.collage .caja{
+	width: 32%;
+	box-shadow:10px 10px 5px 0px rgba(0,0,0,0.75);
+	display:flex;
+	flex-direction:column;
+	justify-content:space-between;
+}
+
+.collage .caja img{
+	width: 100%;
+	height: 32%;
+	object-fit:cover;
+}
+
+.collage img:hover{
+	transform:scale(1.5);
+	transition:all ease 1.5s;
+	cursor:pointer;
+}
+
+.collage .largo img{
+	 height: 48%;
+}
+
+.collage .maslargo{
+	height:65%;
+	
+}
+
+
+
+
+footer {
+	background:#9E9B97;
+	width: 100%;
+	padding-bottom: 30px;
+	padding-left: 10px;
+
+	/* Flexbox */
+	display: flex;
+	flex-wrap:wrap;
+	justify-content:space-between;
+}
+
+
+footer p{
+	color: #403E3B;
+}
+
+
+/*
+@media screen and (min-width:801px) {
+	#carrusel{display:none;}
+}
+*/
+
+@media screen and (max-width: 800px) {
+	.fotoperro{display:none;}
+	.info{display:none;}
+	/*https://www.w3schools.com/cssref/css3_pr_mediaquery.asp*/
+	.contenedor {
+		flex-direction:column;
+	}
+
+	header {
+		flex-direction:column;
+		padding:0;
+	}
+
+	header .logo {
+		margin:20px 0;
+	}
+
+	nav {
+		width: 100%;
+		flex-direction:column;
+		justify-content:center;
+	}
+
+
+
+	.cajainfo {
+		width: 100%;
+		display:flex;
+		font-size:15px;
+		padding:0 10px;
+		background-color:white;
+		padding-top:20px;
+		padding-bottom: 30px;
+		flex-direction: column;
+	}
+
+	.cajainfo h3{
+		color:grey;
+	}
+
+	.columna1{
+		display:flex;
+		width: 100%;
+		flex-direction:column;
+		align-items:right;
+		text-align:right;
+		padding-bottom: 20px;
+	}
+
+
+	.columna1 hr{
+		float:right;
+	}
+
+
+
+
+
+
+	.columna2{
+		display:flex;
+		width: 100%;
+		flex-direction:column;
+		align-items:left;
+		text-align:left;
+		text-indent: 0px;
+	}
+
+
+	.columna2 hr{
+		float:left;
+	}
+
+
+	.cajainfo .columna2 input{
+		text-decoration:none;
+		font-weight: 600;
+		font-size: 15px;
+		color:#000000;
+		padding-top:10px;
+		padding-bottom:10px;
+		padding-left:3px;
+		padding-right:3px;
+		background-color: transparent;
+		border-width: 3px;
+		border-style: solid;
+		border-color: #000000;
+		width: 30%;
+	}
+
+
+	body {
+	background: #4cb487;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+	}
+
+	body{
+	    font-family: 'open-sans';
+	    background: #34495e;
+	}
+
+	.collage{
+	    width: 100%;
+	    max-width: 1000px;
+	 
+	    margin: auto;
+		display:flex;
+		justify-content:space-between;
+		background-color:#4cb487; 
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	.collage .caja{
+	    width: 32%;
+	    overflow: hidden;
+	    box-shadow:10px 10px 5px 0px rgba(0,0,0,0.75);
+		display:flex;
+		flex-direction:column;
+		justify-content:space-between;
+	}
+
+	.collage .caja img{
+	    width: 100%;
+	    height: 32%;
+	    object-fit:cover;
+	}
+
+	.collage img:hover{
+	    transform:scale(1.5);
+	    transition:all ease 1.5s;
+	    cursor:pointer;
+	}
+
+	.collage .largo img{
+		 height: 48%;
+	}
+
+	.collage .maslargo{
+		height:65%;
+		
+	}
+
+
+
+
+}
+
+@media screen and (max-width: 600px) {
+	.fotoperro{display:none;}
+	.info{display:none;}
+
+
+
+	footer {
+		justify-content:space-around;
+	}
+}
