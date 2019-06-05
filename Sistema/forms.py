@@ -1,6 +1,7 @@
 from django import forms
 from .models import Perfil
 from .models import Producto
+from .models import Detalle_Pedido
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -65,3 +66,26 @@ class AgregarProducto(forms.ModelForm):
             'descripcion': forms.TextInput(attrs={'class':'form'}),
             'stockProducto' : forms.TextInput(attrs={'class':'form'}),
         }
+
+
+
+class AgregarDetalle(forms.ModelForm):
+    class Meta:
+        model = Detalle_Pedido
+
+        fields = [
+            'codigoProducto',
+            'nombreProducto',
+            'precioProducto',
+        ]
+        labels = {
+            'codigoProducto' : 'Codigo de producto',
+            'nombreProducto' : 'Nombre de producto',
+            'precioProducto' : 'Precio',
+        }
+        widgets = {
+            'codigoProducto' : forms.TextInput(attrs={'class':'form','readonly':'true'}),
+            'nombreProducto' : forms.TextInput(attrs={'class':'form','readonly':'true'}),
+            'precioProducto' : forms.TextInput(attrs={'class':'form','readonly':'true'}),
+        }
+

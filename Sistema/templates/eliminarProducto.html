@@ -14,7 +14,7 @@
 {% block formulario %}
 <form method="post" enctype="multipart/form-data" action="">
     {% csrf_token %}
-    <h3>¿Desea eliminar el registro de {{ p.nombreProducto}}</h3>
+    <h3>¿Desea eliminar el registro de {{ producto.nombreProducto }}?</h3>
     {{ form.as_p }}
     <input type="submit" value="Si, eliminar">
     <a href= "{% url 'gestionProducto' %}">Cancelar</a>

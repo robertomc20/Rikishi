@@ -1,0 +1,33 @@
+{% extends "maqueta.html" %}
+
+{% block nav %}
+{% if user.is_authenticated and user.is_superuser %}
+<nav>
+    <a href="{% url 'inicio' %}">Inicio</a> 
+    <a href="#">Quienes Somos</a> 
+    <a href="#">Servicios</a> 
+    <a href="{% url 'verProductos' %}">Ver productos</a> 
+    <a href="{% url 'logout' %}">Cerrar Sesion</a>
+</nav> 
+{% else %}
+<nav>
+    <a href="{% url 'inicio' %}">Inicio</a> 
+    <a href="#">Quienes Somos</a> 
+    <a href="#">Servicios</a> 
+    <a href="{% url 'verProductos' %}">Ver productos</a> 
+    <a href="{% url 'logout' %}">Cerrar Sesion</a>
+</nav> 
+{% endif %}
+{% endblock %}
+
+
+{% block formulario %}
+<form method="post" enctype="multipart/form-data" action="">
+    {% csrf_token %}
+    <h3>¿Desea quitar el/la {{ pedido.nombreProducto }} del carrito de compras?</h3>
+    {{ form.as_p }}
+    <input type="submit" value="Si, quitar">
+    <a href= "{% url 'verProductos' %}">Cancelar</a>
+</form>    
+
+{% endblock %}

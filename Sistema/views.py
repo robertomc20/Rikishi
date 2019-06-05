@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Perfil
 from .models import Producto
-from .forms import SignUpForm,AgregarProducto
+from .models import Detalle_Pedido
+from .forms import SignUpForm,AgregarProducto,AgregarDetalle
 """from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm"""
@@ -88,4 +89,38 @@ def eliminarProducto(request, pk):
     return render (request, 'eliminarProducto.html', {'producto':producto})
 
 
+def verProductos(request):
+    producto=Producto.objects.all()
+    pedido=Detalle_Pedido.objects.filter(cliente=request.user.username)
+    contexto={
+        'pedido':pedido,
+        'producto':producto,
+    }
+    return render (request,"verProductos.html",contexto)
 
+
+
+
+
+def añadirProducto(request,pk):
+    producto=Producto.objects.get(codigoProducto=pk)
+    pedido=Detalle_Pedido.objects.all()
+    if request.method == "GET":
+        form = AgregarDetalle(instance=producto)
+    else:
+        form = AgregarDetalle(request.POST or None,request.FILES or None,instance=producto)
+        if form.is_valid():
+            datos=form.cleaned_data
+            regDb=Detalle_Pedido(codigoProducto=datos.get("codigoProducto"),nombreProducto=datos.get("nombreProducto"),precioProducto=datos.get("precioProducto"),cliente=request.user.username)
+            regDb.save()
+            form.save()
+        return redirect('verProductos')
+    return render(request, 'añadirProducto.html', {'form':form,'producto':producto})
+
+
+def eliminarPedido(request, pk):
+    pedido=Detalle_Pedido.objects.get(codigoPedido=pk)
+    if request.method == "POST":
+        pedido.delete()
+        return redirect('verProductos')
+    return render (request, 'eliminarPedido.html', {'pedido':pedido})
