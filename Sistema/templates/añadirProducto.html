@@ -22,12 +22,19 @@
 
 
 {% block formulario %}
-<form method="post" enctype="multipart/form-data" action="">
+<div class="paneleditar">
+    <div class="tituloeditar">
+       ¿Desea agregar al carrito un(a)?
+    </div>
+<div class="formularieditar">
+<form class="formulario" method="post" enctype="multipart/form-data" action="">
+    <div class="contenedor-inputseditar">
     {% csrf_token %}
-    <h3>¿Desea agregar al carrito un(a) {{ producto.nombreProducto}}?</h3>
     {{ form.as_p }}
-    <input type="submit" value="Añadir">
-    <a href= "{% url 'verProductos' %}">Cancelar</a>
-</form>    
-
+   <input class="btn-enviar" type="submit" value="Agregar al carrito">
+   <a class="boton_cancelar" href= "{% url 'verProductos' %}">Cancelar</a>
+</div>
+</form> 
+</div> 
+</div> 
 {% endblock %}

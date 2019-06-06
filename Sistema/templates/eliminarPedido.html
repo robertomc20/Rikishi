@@ -22,12 +22,20 @@
 
 
 {% block formulario %}
-<form method="post" enctype="multipart/form-data" action="">
+<div class="paneleliminar">
+    <div class="tituloeliminar">
+        <h1>Quitar del carrito</h1>
+    </div>
+ <div class="formularioeliminar">
+ <form method="post" action="" enctype="multipart/form-data">
+    <div class="contenedor-inputseliminar">
     {% csrf_token %}
     <h3>¿Desea quitar el/la {{ pedido.nombreProducto }} del carrito de compras?</h3>
     {{ form.as_p }}
-    <input type="submit" value="Si, quitar">
-    <a href= "{% url 'verProductos' %}">Cancelar</a>
-</form>    
-
+    <input class="boton_eliminarprod" type="submit" value="Si, quitar">
+    <a class="boton_cancelar" href= "{% url 'verProductos' %}">Cancelar</a>
+       </div>
+       </form> 
+</div>
+</div>
 {% endblock %}
