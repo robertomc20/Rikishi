@@ -19,7 +19,7 @@ urlpatterns=[
     url(r'^lista/$',views.verProductos,name="verProductos"),
     url(r'^lista/añadir/(?P<pk>[0-9]+)/$',views.añadirProducto,name="añadirProducto"),
     url(r'^lista/eliminar/(?P<pk>[0-9]+)/$',views.eliminarPedido,name="eliminarPedido"),
-   
+    url(r'^pedido/$',views.mostrarPedido,name="mostrarPedido"),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -26,15 +26,15 @@ def base_layout(request):
 
 
 def registroCliente(request):
-    form=SignUpForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-    user=User.objects.all()
-    contexto={
-        'user':User,
-        'form':form,
-    }
-    return render (request,"registroCliente.html",contexto)
+    if request.method == 'POST':
+        form=SignUpForm(request.POST or None)
+        if form.is_valid():
+            user=form.save()
+            login(request, user)
+            return redirect('inicio')
+    else:
+        form = SignUpForm()
+    return render (request,"registroCliente.html", {'form':form})
 
 
 def loginCliente(request):
@@ -124,3 +124,6 @@ def eliminarPedido(request, pk):
         pedido.delete()
         return redirect('verProductos')
     return render (request, 'eliminarPedido.html', {'pedido':pedido})
+
+def mostrarPedido(request):
+    return render (request,"pedido.html")
