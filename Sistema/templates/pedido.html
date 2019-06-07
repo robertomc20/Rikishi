@@ -1,0 +1,32 @@
+
+{% extends "maqueta.html" %}
+{% load static%}
+
+{% block bienvenido_user  %}
+{% if user.is_authenticated  %}
+<h2 class="mensaje">Bienvenido {{user.username}}</h2>
+<nav>
+    <a href="{% url 'inicio' %}">Inicio</a>
+    <a href="#">Quienes Somos</a>
+    <a href="#">Servicios</a>
+    <a href="{% url 'verProductos' %}">Ver productos</a> 
+    <a href="{% url 'logout' %}">Cerrar sesión</a>
+</nav> 
+{% endif %}
+{% endblock %}
+
+
+{% block formulario %}
+<div class="panel">
+    <div class="titulo">
+        <h1>PEDIDO COMPLETADO</h1>
+    </div>
+    <div class="formulari">
+        <div class="contenedor-inputs2">
+            <a>Tu pedido se realizó con exito, acercate en los proximos 5 minutos para retirarlo en el local.</a>
+            <a>Disfruta por nosotros!</a>
+            <img src="{% static 'img/rikishi_logo_negro.png' %}" width="100%" alt="">
+    </div>
+        </div>
+</div>
+{% endblock %}

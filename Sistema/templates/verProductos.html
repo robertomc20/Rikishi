@@ -33,13 +33,13 @@
                 </thead>
                 <tbody>
                     {% if pedido %}
+                        <a class= "boton_editarlista" href = "{% url 'mostrarPedido' %}"> ENCARGAR PEDIDO </a> 
                         {% for dp in pedido %}
                             <tr>    
                                 <td class="fila">{{ dp.codigoPedido }}</td>
                                 <td class="fila">{{ dp.nombreProducto }}</td>
                                 <td class="fila">{{ dp.precioProducto }}</td>
                                 <td class="boton_accion">
-                                    <a class= "boton_editarlista" href = "#"> ENCARGAR PEDIDO </a> 
                                     <a class= "boton_eliminarlista" href = "{% url 'eliminarPedido' pk=dp.codigoPedido %}"> QUITAR DEL CARRITO </a>
                                 </td>
                             </tr>
