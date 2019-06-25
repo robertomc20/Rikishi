@@ -1,19 +1,20 @@
 {% extends "maqueta.html" %}
 
 {% block nav %}
-{% if user.is_authenticated and user.is_superuser %}
+{% if user.is_authenticated %}
+<div class="navegador">
+    <div class="usuario">
+ <h4>{{user.username}}</h4>
+</div>
 <nav>
-    <a href="{% url 'inicio' %}">Inicio</a> 
-    <a href="#">Quienes Somos</a> 
-    <a href="#">Servicios</a> 
+    <a href="{% url 'inicio' %}">Inicio</a>
     <a href="{% url 'verProductos' %}">Ver productos</a> 
-    <a href="{% url 'logout' %}">Cerrar Sesion</a>
+    <a href="{% url 'logout' %}">Cerrar sesión</a>
 </nav> 
+</div>
 {% else %}
 <nav>
-    <a href="{% url 'inicio' %}">Inicio</a> 
-    <a href="#">Quienes Somos</a> 
-    <a href="#">Servicios</a> 
+    <a href="{% url 'inicio' %}">Inicio</a>  
     <a href="{% url 'verProductos' %}">Ver productos</a> 
     <a href="{% url 'logout' %}">Cerrar Sesion</a>
 </nav> 
@@ -22,19 +23,32 @@
 
 
 {% block formulario %}
-<div class="paneleditar">
-    <div class="tituloeditar">
+<div class="fondo-formulario">
+<div class="panelañadir">
+    <div class="tituloañadir">
        ¿Desea agregar al carrito un(a)?
     </div>
-<div class="formularieditar">
+<div class="formulariañadir">
 <form class="formulario" method="post" enctype="multipart/form-data" action="">
-    <div class="contenedor-inputseditar">
-    {% csrf_token %}
-    {{ form.as_p }}
-   <input class="btn-enviar" type="submit" value="Agregar al carrito">
-   <a class="boton_cancelar" href= "{% url 'verProductos' %}">Cancelar</a>
+    <div class="contenedor-inputsañadir">
+    {% if producto %}
+    <div class="infoproducto">
+        <div class="imagen-producto">
+            <img src="{{ producto.fotoProducto.url }}" width="100%" height="250px">
+        </div>
+        <div class="productodetalles">
+            {% csrf_token %}
+            {{ form.as_p}} 
+            <input class="btn-añadir" type="submit" value="AGREGAR AL CARRITO">
+            <a class="boton_cancelarañadir" href= "{% url 'verProductos' %}">CANCELAR</a>
+        </div>
+    </div>
+    {% else %}
+       <h2>No hay productos </h2>
+    {% endif %}
 </div>
 </form> 
 </div> 
 </div> 
+</div>
 {% endblock %}
