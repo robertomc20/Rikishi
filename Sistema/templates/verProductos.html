@@ -4,18 +4,21 @@
 
 {% block bienvenido_user  %}
 {% if user.is_authenticated  %}
-<h2 class="mensaje">Bienvenido {{user.username}}</h2>
+<div class="navegador">
+    <div class="usuario">
+ <h4>{{user.username}}</h4>
+</div>
 <nav>
     <a href="{% url 'inicio' %}">Inicio</a>
-    <a href="#">Quienes Somos</a>
-    <a href="#">Servicios</a>
     <a href="{% url 'verProductos' %}">Ver productos</a> 
     <a href="{% url 'logout' %}">Cerrar sesión</a>
 </nav> 
+</div>
 {% endif %}
 {% endblock %}
 
 {% block lista2 %}   
+<div class="fondo-formulario">
 <div class="regtitulo">
     Carrito
 </div>
@@ -52,51 +55,39 @@
         </div>
     </div>
 </div>
+</div>
 {% endblock%}
 
 
 {% block lista %}   
+<div class="fondo-formulario">
 <div class="regtitulo">
     Lista de productos
 </div>
 <div class="panellista">
     <div class="formulariolista">
         <div class="formucontenedor">      
-            <table class="tablalista" border="0">
-                <thead>
-                    <tr>
-                        <td class="columnas">#</td>
-                        <td class="columnas">Nombre</td>
-                        <td class="columnas">Precio</td>
-                        <td class="columnas">Descripción</td>
-                        <td class="columnas">Stock</td>
-                        <td class="columnas">Imagen</td>
-                        <td class="columnas">Acción</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% if producto %}
-                        {% for p in producto %}
-                            <tr>    
-                                <td class="fila">{{ p.codigoProducto }}</td>
-                                <td class="fila">{{ p.nombreProducto }}</td>
-                                <td class="fila">{{ p.precioProducto }}</td>
-                                <td class="fila">{{ p.descripcion }} </td>
-                                <td class="fila">{{ p.stockProducto }}</td>
-                                <td class="foto">
-                                    <img src="{{ p.fotoProducto.url }}" width="200px" height="100px"></td>
-                                <td class="boton_accion">
-                                    <a class= "boton_editarlista" href = "{% url 'añadirProducto' pk=p.codigoProducto %}"> AGREGAR AL CARRITO </a> 
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    {% else %}
-                        <h2>No hay productos </h2>
-                    {% endif %}
-                </tbody>
-            </table>
+            {% if producto %}
+                <div class="infoproducto">
+                {% for p in producto %}   
+                        <div class="cajaproducto">
+                            <div class="imagen-producto">
+                                <img src="{{ p.fotoProducto.url }}" width="210px" height="200px">
+                            </div>
+                            <div class="productodetalles">
+                                <h3>{{ p.nombreProducto }}</h3>
+                                <h4>${{ p.precioProducto }}</h4>
+                                <a class= "btn-añadir" href = "{% url 'añadirProducto' pk=p.codigoProducto %}"> AGREGAR AL CARRITO </a>
+                            </div>
+                        </div>
+                {% endfor %}
+                  </div>
+            {% else %}
+                <h2>No hay productos </h2>
+            {% endif %}
         </div>
     </div>
+</div>
 </div>
 {% endblock%}
 <!--   href="{% url 'gestionCliente' %}"     -->

@@ -58,18 +58,20 @@
 <!--   href="{% url 'gestionCliente' %}"     -->
 
 {% block formulario %}
-<div class="regpanel">
-    <div class="regtitulo">
-        Datos de producto
-    </div>
-    <div class="regproducto">
-        <form class="formulario" method="post" enctype="multipart/form-data" action="">
-        <div class="regcontenedor-inputs">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input class="btn-enviar" type="submit" value="Crear producto">
+<div class="fondo-formulario">
+    <div class="regpanel">
+        <div class="regtitulo">
+            Datos de producto
         </div>
-        </form>  
-    </div>
-</div> 
+        <div class="regproducto">
+            <form class="formulario" method="post" enctype="multipart/form-data" action="">
+            <div class="regcontenedor-inputs">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class="btn-enviar" type="submit" value="Crear producto">
+            </div>
+            </form>  
+        </div>
+    </div> 
+</div>
 {% endblock %}

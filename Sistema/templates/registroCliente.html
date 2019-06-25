@@ -16,8 +16,6 @@
 <nav>
     <a href="{% url 'inicio' %}">Inicio</a>
     <a href="{% url 'registroCliente' %}">Registrarse</a>
-    <a href="#">Productos</a>
-    <a href="#">Contactanos</a> 
     <a href="{% url 'login' %}">Iniciar Sesion</a>
 </nav> 
 {% endif %}
@@ -25,6 +23,7 @@
 
 
 {% block formulario %}
+<div class="fondo-formulario">
 <div class="panel2">
     <div class="titulo2">
         Registro Usuario
@@ -39,4 +38,5 @@
 </form> 
 </div> 
 </div>  
+</div>
 {% endblock %}
