@@ -12,11 +12,19 @@
 	
 }
 body {
-	background:#d80404;
+	background:#F06060;
 	width: 100%;
 }
+img
+{
+  border:0;
+}
+a, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: inherit;
+}
 .contenedor {
-	background-color:#d80404;
+	background-color:#F06060;
 	max-width:1300px;
 	width: 100%;
 	margin:auto;
@@ -36,7 +44,7 @@ body {
 	
 }
 .jaja{
-	background-color:#d80404;
+	background-color:#F06060;
 	width:100%;
 	display: flex;
 	justify-content: space-between;
@@ -46,7 +54,7 @@ body {
 
 
 .formulario {
-	background-color:#d80404;
+	background-color:#F06060;
 	width: 100%;
 	display: block;
 	justify-content: space-between;
@@ -104,7 +112,7 @@ h2{
 }
 
 .mensaje{
-	background-color:#d80404;
+	background-color:#F06060;
 	text-align: right;
 }
 .lista .table .modificar{
@@ -118,7 +126,7 @@ h2{
     border: 2px solid #0016b0;
   }
   .lista .table .modificar:hover{
-    color: #1883ba;
+    color: inherit;
     background-color: #ffffff;
   }
 
@@ -139,7 +147,7 @@ h2{
   }
 
 header {
-	background:#d80404;
+	background:#F06060;
 	width:100%;
 	padding:20px;
 
@@ -184,7 +192,7 @@ header nav {
 }
 
 header nav a {
-	background:#d80404;
+	background:#F06060;
 	color:#000000;
 	height: 50px;
 	text-align: center;
@@ -198,7 +206,7 @@ header nav a {
 }
 
 header nav a:hover {
-	background:#a60a0a;
+	background:inherit;
 }
 .navegador{
 	display: flex;
@@ -244,7 +252,7 @@ ul{
 .info 
 {
 	color:#000000;
-	background:#ff0000;
+	background:#F06060;
 	width: 100%;
 	text-align: center;
 	font-size: 18px;
@@ -817,7 +825,7 @@ font-size: 40px;
 }
 /* CABECERAS DE LA TABLA*/
 .columnas{
-	background: #d80404;
+	background: #F06060;
 	text-align: center;
 	border-radius: 6px;
 	font-size: 25px;
