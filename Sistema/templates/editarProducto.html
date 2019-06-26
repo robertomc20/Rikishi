@@ -1,17 +1,7 @@
 {% extends "maqueta.html" %}
 
-{% block nav %}
-{% if user.is_authenticated and user.is_superuser %}
-<nav>
-    <a href="{% url 'inicio' %}">Inicio</a> 
-    <a href="{% url 'gestionProducto' %}">Gestionar productos</a> 
-    <a href="{% url 'logout' %}">Cerrar Sesion</a>
-</nav> 
-{% endif %}
-{% endblock %}
-
-
 {% block formulario %}
+<div class="fondo-formulario">
 <div class="paneleditar">
     <div class="tituloeditar">
        Edicion de Producto
@@ -26,5 +16,6 @@
 </form> 
 </div> 
 </div>  
+</div>
 
 {% endblock %}

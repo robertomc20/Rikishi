@@ -6,6 +6,7 @@
     
     <meta charset="utf-8">
     <title>Rikishi</title>
+    <link rel="shortcut icon" href="{% static 'img/icosumo.png' %}">
     <meta name="description" content="Pagina completa con Flexbox"><!--Utilizamos el descriptor en meta para apoyar la busqueda de contenidos en la web-->
     <meta name="viewport" content="width=device-widtg, user-scalable=no, initial-scale=1.0,maximun-scale=1.0,minimun-scale=1.0"><!--las escalas indican un punto inicial, la escala maxima y minima-->
     <script src="prefix.js" type="test/javascript"></script><!--Script para asegurar que en todos los navegadores y dispositivos el sitio se vea igual-->
@@ -14,29 +15,52 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/jquery.bxslider.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
     <body>
         <div class="contenedor">
                 <header>     
                     <div class="logo">
-                        <img src="{% static 'img/sumo.png' %}" width="100%" alt="">
+                        <img src="{% static 'img/sumo.png' %}">
                     </div>	               
-                </header>
+             
 
+    <!--BLOQUES NAV USUARIO NORMAL Y ADMIN-->        
+{% block nav %}
+{% if user.is_authenticated %}
     {% if user.is_superuser %}
-
-        {% block bienvenido_admin %}
-        {% endblock %}
-        
+    <nav>
+        <a href="{% url 'inicio' %}">Inicio</a>
+        <a href="{% url 'gestionProducto' %}">Gestionar productos</a>
+        <a href="{% url 'logout' %}">Cerrar Sesion</a>
+    </nav> 
+    <h2 class="mensaje">Bienvenido {{user.username}}</h2>
     {% else %}
-        
-        {% block bienvenido_user %}
-        {% endblock %}
-        
+    <nav>
+        <a href="{% url 'inicio' %}">Inicio</a>
+        <a href="#">Quienes Somos</a>
+        <a href="#">Servicios</a>
+        <a href="{% url 'verProductos' %}">Ver productos</a> 
+        <a href="{% url 'logout' %}">Cerrar sesión</a>
+    </nav> 
+    <h2 class="mensaje">Bienvenido {{user.username}}</h2>
     {% endif %}
-        
-    {% block nav %}       
-    {% endblock %}	
+{% else %}
+<div>
+    <h1></h1>
+</div>
+<!-- NAVEGADOR DE USUARIO SIN LOG -->
+<nav>
+    <a href="{% url 'inicio' %}">Inicio</a>
+    <a href="{% url 'registroCliente' %}">Registrarse</a>
+    <a href="#">Productos</a>
+    <a href="#">Contactanos</a> 
+    <a href="{% url 'login' %}">Iniciar Sesion</a>
+</nav> 
+{% endif %}
+{% endblock %}
+       </header>
         
         <!-- bloques pagina login-->
             
@@ -47,7 +71,7 @@
     {% block jaja %}
     {% endblock %}  
 
-        <!-- BLOQUES CLIENTES y PERROS -->
+        <!-- BLOQUES CLIENTES -->
   
     {% block formulario %}
     {% endblock %}  

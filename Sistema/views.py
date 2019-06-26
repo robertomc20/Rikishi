@@ -126,4 +126,6 @@ def eliminarPedido(request, pk):
     return render (request, 'eliminarPedido.html', {'pedido':pedido})
 
 def mostrarPedido(request):
+    Detalle_Pedido.objects.all().delete
+    
     return render (request,"pedido.html")

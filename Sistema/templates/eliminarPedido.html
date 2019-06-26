@@ -1,26 +1,5 @@
 {% extends "maqueta.html" %}
 
-{% block nav %}
-{% if user.is_authenticated and user.is_superuser %}
-<nav>
-    <a href="{% url 'inicio' %}">Inicio</a> 
-    <a href="#">Quienes Somos</a> 
-    <a href="#">Servicios</a> 
-    <a href="{% url 'verProductos' %}">Ver productos</a> 
-    <a href="{% url 'logout' %}">Cerrar Sesion</a>
-</nav> 
-{% else %}
-<nav>
-    <a href="{% url 'inicio' %}">Inicio</a> 
-    <a href="#">Quienes Somos</a> 
-    <a href="#">Servicios</a> 
-    <a href="{% url 'verProductos' %}">Ver productos</a> 
-    <a href="{% url 'logout' %}">Cerrar Sesion</a>
-</nav> 
-{% endif %}
-{% endblock %}
-
-
 {% block formulario %}
 <div class="paneleliminar">
     <div class="tituloeliminar">
@@ -30,7 +9,7 @@
  <form method="post" action="" enctype="multipart/form-data">
     <div class="contenedor-inputseliminar">
     {% csrf_token %}
-    <h3>¿Desea quitar el/la {{ pedido.nombreProducto }} del carrito de compras?</h3>
+    <h3>¿Desea quitar el/la {{ producto.nombreProducto }} del carrito de compras?</h3>
     {{ form.as_p }}
     <input class="boton_eliminarprod" type="submit" value="Si, quitar">
     <a class="boton_cancelar" href= "{% url 'verProductos' %}">Cancelar</a>

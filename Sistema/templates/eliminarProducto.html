@@ -1,17 +1,7 @@
 {% extends "maqueta.html" %}
 
-{% block nav %}
-{% if user.is_authenticated and user.is_superuser %}
-<nav>
-    <a href="{% url 'inicio' %}">Inicio</a> 
-    <a href="{% url 'gestionProducto' %}">Gestionar productos</a> 
-    <a href="{% url 'logout' %}">Cerrar Sesion</a>
-</nav> 
-{% endif %}
-{% endblock %}
-
-
 {% block formulario %}
+<div class="fondo-formulario">
 <div class="paneleliminar">
     <div class="tituloeliminar">
         <h1>ELIMINAR PRODUCTO</h1>
@@ -26,6 +16,7 @@
     <a class="boton_cancelar" href= "{% url 'gestionProducto' %}">Cancelar</a>
        </div>
        </form> 
+</div>
 </div>
 </div>
 {% endblock %}
