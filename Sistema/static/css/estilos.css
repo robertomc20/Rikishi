@@ -8,7 +8,7 @@
 	inherit utiliza el valor del contenedor del elemento
 	*/
 	box-sizing: border-box;
-	font-family: Japonesa;
+	font-family: CircularStd-Bold,Helvetica,Arial,sans-serif;
 	
 }
 body {
@@ -1123,7 +1123,6 @@ footer p{
 	}
 
 	body{
-	    font-family: 'open-sans';
 	    background: #34495e;
 	}
 

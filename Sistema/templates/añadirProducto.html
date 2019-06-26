@@ -1,27 +1,5 @@
 {% extends "maqueta.html" %}
 
-{% block nav %}
-{% if user.is_authenticated %}
-<div class="navegador">
-    <div class="usuario">
- <h4>{{user.username}}</h4>
-</div>
-<nav>
-    <a href="{% url 'inicio' %}">Inicio</a>
-    <a href="{% url 'verProductos' %}">Ver productos</a> 
-    <a href="{% url 'logout' %}">Cerrar sesión</a>
-</nav> 
-</div>
-{% else %}
-<nav>
-    <a href="{% url 'inicio' %}">Inicio</a>  
-    <a href="{% url 'verProductos' %}">Ver productos</a> 
-    <a href="{% url 'logout' %}">Cerrar Sesion</a>
-</nav> 
-{% endif %}
-{% endblock %}
-
-
 {% block formulario %}
 <div class="fondo-formulario">
 <div class="panelañadir">
@@ -33,9 +11,11 @@
     <div class="contenedor-inputsañadir">
     {% if producto %}
     <div class="infoproducto">
+        <h2>{{producto.nombreProducto}}</h2>
         <div class="imagen-producto">
             <img src="{{ producto.fotoProducto.url }}" width="100%" height="250px">
         </div>
+        <h4>{{producto.descripcion}}</h4>
         <div class="productodetalles">
             {% csrf_token %}
             {{ form.as_p}} 

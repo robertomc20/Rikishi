@@ -1,57 +1,6 @@
 {% extends "maqueta.html" %}
 {% load static from staticfiles %}
 
-<!--BLOQUES NAV USUARIO NORMAL Y ADMIN-->
-{% block bienvenido_admin  %}
-{% if user.is_authenticated and user.is_superuser %}
-<div class="navegador">
-    <div class="usuario">
-        <h4>{{user.username}}</h4>
-    </div>
-    <nav>
-    <a href="{% url 'inicio' %}">Inicio</a>
-    <a href="{% url 'gestionProducto' %}">Gestionar productos</a>
-    <a href="{% url 'logout' %}">Cerrar Sesion</a>
-    </nav>
-</div> 
-{% else %}
-<div>
-    <h1></h1>
-</div>
-<nav>
-    <a href="{% url 'inicio' %}">Inicio</a>
-    <a href="{% url 'registroCliente' %}">Registrarse</a>
-    <a href="#">Gestionar Mascotas</a>
-    <a href="{% url 'login' %}">Iniciar Sesion</a>
-</nav> 
-{% endif %}
-{% endblock %}
-
-
-{% block bienvenido_user  %}
-{% if user.is_authenticated  %}
-<div class="navegador">
-    <div class="usuario">
- <h4>{{user.username}}</h4>
-</div>
-<nav>
-    <a href="{% url 'inicio' %}">Inicio</a>
-    <a href="{% url 'verProductos' %}">Ver productos</a> 
-    <a href="{% url 'logout' %}">Cerrar sesión</a>
-</nav> 
-</div>
-{% else %}
-<div>
-    <h1></h1>
-</div>
-<!-- NAVEGADOR DE USUARIO SIN LOG -->
-<nav>
-    <a href="{% url 'inicio' %}">Inicio</a>
-    <a href="{% url 'registroCliente' %}">Registrarse</a>
-    <a href="{% url 'login' %}">Iniciar Sesion</a>
-</nav> 
-{% endif %}
-{% endblock %}
 
 <!-- BLOQUES CUERPO PAGINA-->
 
